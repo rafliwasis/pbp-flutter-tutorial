@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kriboapp/main.dart';
+import 'package:kriboapp/page/to_do_page.dart';
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
@@ -23,7 +25,41 @@ class _MyFormPageState extends State<MyFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Form'),
+        title: const Text('Form'),
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            ListTile(
+              title: const Text('Counter'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Form'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyFormPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('To Do'),
+              onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ToDoPage()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: Form(
         key: _formKey,
@@ -194,7 +230,7 @@ class _MyFormPageState extends State<MyFormPage> {
                                   Center(child: const Text('Informasi Data')),
                                   SizedBox(height: 20),
                                   Center(
-                                    child: Text('Nama: ' + _namaLengkap),
+                                    child: Text('Judul: ' + _namaLengkap),
                                   ),
                                   TextButton(
                                     onPressed: () {
